@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti, Sara 💙</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, 
+                    rgba(138, 43, 226, 0.3) 0%, 
+                    rgba(75, 0, 130, 0.5) 25%, 
+                    rgba(25, 25, 112, 0.6) 50%,
+                    rgba(72, 61, 139, 0.5) 75%,
+                    rgba(123, 104, 238, 0.3) 100%);
+        color: #fff;
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        padding: 40px 20px;
+    }
+
+    body::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #ff69b4, #87ceeb, #da70d6);
+        border-radius: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #ff1493, #4682b4, #ba55d3);
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(135, 206, 250, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(186, 85, 211, 0.1) 0%, transparent 70%);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Personajes decorativos del fondo */
+    .bg-character {
+        position: fixed;
+        opacity: 0.25;
+        pointer-events: none;
+        z-index: 0;
+        filter: drop-shadow(0 0 30px rgba(255, 182, 193, 0.4));
+    }
+
+    .stitch-bg {
+        width: 300px;
+        top: 10%;
+        left: 5%;
+        animation: floatSlow 8s ease-in-out infinite;
+    }
+
+    .donkey-bg {
+        width: 250px;
+        bottom: 15%;
+        right: 8%;
+        animation: floatSlow 10s ease-in-out infinite 2s;
+    }
+
+    .naruto-bg {
+        width: 280px;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        animation: floatSlow 9s ease-in-out infinite 1s;
+    }
+
+    @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    /* Parallax background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: -10%;
+        left: -10%;
+        width: 120%;
+        height: 120%;
+        background: inherit;
+        background-size: cover;
+        z-index: -1;
+        transition: transform 0.1s ease-out;
+    }
+
+    /* Partículas flotantes */
+    .heart, .star, .bubble {
+        position: fixed;
+        bottom: -10px;
+        font-size: 18px;
+        animation: float 6s linear infinite;
+        pointer-events: none;
+    }
+
+    .heart { color: #ffb6c1; }
+    .star { color: #ffd700; }
+    .bubble { 
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12px;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-100vh) scale(1.5) rotate(360deg); opacity: 0; }
+    }
+
+    .container {
+        background: linear-gradient(135deg, 
+                    rgba(138, 43, 226, 0.85) 0%, 
+                    rgba(75, 0, 130, 0.9) 50%,
+                    rgba(72, 61, 139, 0.85) 100%);
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 182, 193, 0.3);
+        border-radius: 25px;
+        padding: 40px 30px;
+        max-width: 600px;
+        width: 90%;
+        box-shadow: 0 0 60px rgba(255, 182, 193, 0.4), 
+                    0 0 100px rgba(135, 206, 250, 0.3),
+                    inset 0 0 80px rgba(186, 85, 211, 0.1);
+        position: relative;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+        z-index: 10;
+        margin: 20px auto;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-out {
+        animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-20px); }
+    }
+
+    .fade-in {
+        animation: fadeInUp 0.5s ease forwards;
+    }
+
+    h1, h2 {
+        color: #ffb6d9;
+        margin-bottom: 15px;
+        text-shadow: 0 0 20px rgba(255, 182, 217, 0.6), 0 0 40px rgba(135, 206, 250, 0.4);
+    }
+
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #fefefe;
+    }
+
+    /* Barra de progreso */
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #ff69b4, #87ceeb, #da70d6);
+        border-radius: 10px;
+        transition: width 0.5s ease;
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(135, 206, 235, 0.5);
+    }
+
+    .progress-text {
+        font-size: 0.9em;
+        color: #ffb6d9;
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px rgba(255, 182, 217, 0.8);
+    }
+
+    /* Botones */
+    .button-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    button {
+        background: linear-gradient(135deg, #ff69b4, #87ceeb, #da70d6);
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 20px rgba(255, 105, 180, 0.5), 0 4px 15px rgba(135, 206, 235, 0.3);
+        position: relative;
+        overflow: hidden;
+        font-weight: 600;
+    }
+
+    button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    button:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(255, 105, 180, 0.7), 0 6px 20px rgba(135, 206, 235, 0.5);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    button span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-secondary {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Galería de fotos y videos */
+    .fotos {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 25px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease 0.3s forwards;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .fotos::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .fotos::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    .fotos::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #ff69b4, #87ceeb);
+        border-radius: 10px;
+    }
+
+    .fotos::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(90deg, #ff1493, #4682b4);
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    .media-item {
+        flex: 0 0 auto;
+        width: 280px;
+        scroll-snap-align: start;
+        animation: scaleIn 0.5s ease backwards;
+    }
+
+    .media-item:nth-child(1) { animation-delay: 0.1s; }
+    .media-item:nth-child(2) { animation-delay: 0.2s; }
+    .media-item:nth-child(3) { animation-delay: 0.3s; }
+    .media-item:nth-child(4) { animation-delay: 0.4s; }
+    .media-item:nth-child(5) { animation-delay: 0.5s; }
+
+    .fotos img, .fotos video {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+        cursor: pointer;
+        display: block;
+    }
+
+    @keyframes scaleIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .fotos img:hover, .fotos video:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6), 0 8px 25px rgba(135, 206, 235, 0.4);
+    }
+
+    .video-indicator {
+        position: relative;
+    }
+
+    .video-indicator::after {
+        content: '▶';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+    /* Modal para fotos y videos */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+        overflow: auto;
+        padding: 20px;
+    }
+
+    .modal img, .modal video {
+        max-width: 90%;
+        max-height: 90vh;
+        border-radius: 10px;
+        box-shadow: 0 0 60px rgba(255, 105, 180, 0.6), 0 0 100px rgba(135, 206, 235, 0.4);
+        object-fit: contain;
+    }
+
+    .modal video {
+        outline: none;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    /* Stitch decorativo */
+    img.stitch {
+        width: 90px;
+        position: absolute;
+        bottom: -15px;
+        right: -10px;
+        opacity: 0.8;
+        transition: all 0.3s;
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    img.stitch:hover {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 1;
+    }
+
+    /* Controles de música */
+    .music-control {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #87ceeb, #b0e0e6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(135, 206, 235, 0.6), 0 4px 15px rgba(176, 224, 230, 0.4);
+        transition: all 0.3s;
+        z-index: 100;
+    }
+
+    .music-control:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(135, 206, 235, 0.8), 0 6px 25px rgba(176, 224, 230, 0.6);
+    }
+
+    .music-control svg {
+        width: 30px;
+        height: 30px;
+        fill: white;
+    }
+
+    /* Botón descargar */
+    .download-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff69b4, #ffb6d9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255, 105, 180, 0.6), 0 4px 15px rgba(255, 182, 217, 0.4);
+        transition: all 0.3s;
+        z-index: 100;
+        border: none;
+        padding: 0;
+    }
+
+    .download-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(255, 105, 180, 0.8), 0 6px 25px rgba(255, 182, 217, 0.6);
+    }
+
+    .download-btn svg {
+        width: 30px;
+        height: 30px;
+        fill: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        body {
+            padding: 30px 10px;
+        }
+
+        .container {
+            padding: 30px 20px;
+            width: 95%;
+            margin: 10px auto;
+        }
+
+        h1 { font-size: 1.5em; }
+        h2 { font-size: 1.3em; }
+        p { font-size: 1em; line-height: 1.5; }
+
+        button {
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+
+        .media-item {
+            width: 220px;
+        }
+
+        .fotos img, .fotos video {
+            height: 160px;
+        }
+
+        img.stitch {
+            width: 70px;
+            bottom: -10px;
+            right: -5px;
+        }
+
+        .music-control, .download-btn {
+            width: 50px;
+            height: 50px;
+            bottom: 15px;
+        }
+
+        .music-control { right: 15px; }
+        .download-btn { left: 15px; }
+
+        .music-control svg, .download-btn svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* Personajes más pequeños en móvil */
+        .stitch-bg { width: 180px; left: -20px; }
+        .donkey-bg { width: 150px; right: -20px; }
+        .naruto-bg { width: 160px; right: -30px; }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 20px 5px;
+        }
+
+        .container {
+            padding: 25px 15px;
+            margin: 5px auto;
+        }
+
+        h1 { font-size: 1.3em; }
+        h2 { font-size: 1.1em; }
+        p { font-size: 0.95em; }
+
+        .media-item {
+            width: 200px;
+        }
+
+        .fotos img, .fotos video {
+            height: 140px;
+        }
+
+        .button-container {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 20px;
+        }
+
+        .progress-bar {
+            height: 4px;
+        }
+
+        /* Personajes aún más pequeños */
+        .stitch-bg { width: 140px; left: -30px; opacity: 0.2; }
+        .donkey-bg { width: 120px; right: -30px; opacity: 0.2; }
+        .naruto-bg { width: 130px; right: -40px; opacity: 0.2; }
+
+        .modal {
+            padding: 10px;
+        }
+
+        .modal img, .modal video {
+            max-width: 95%;
+            max-height: 85vh;
+        }
+    }
+
+    @media (orientation: landscape) and (max-height: 600px) {
+        body {
+            padding: 10px;
+        }
+
+        .container {
+            margin: 10px auto;
+            padding: 20px;
+        }
+
+        .fotos {
+            max-height: 180px;
+        }
+
+        .fotos img, .fotos video {
+            height: 150px;
+        }
+
+        .bg-character {
+            opacity: 0.15;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        body {
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            padding: 50px 40px;
+            margin: 30px auto;
+        }
+
+        .media-item {
+            width: 320px;
+        }
+
+        .fotos img, .fotos video {
+            height: 220px;
+        }
+    }
+    
+</style>
+</head>
+<body>
+
+<!-- Personajes decorativos del fondo -->
+<img class="bg-character stitch-bg" src="https://pngimg.com/uploads/stitch/stitch_PNG35.png" alt="">
+<img class="bg-character donkey-bg" src="https://purepng.com/public/uploads/large/purepng.com-donkeyshrekdonkeyeddie-murphyanimated-filmthe-ogre170152645761957ez.png" alt="">
+<img class="bg-character naruto-bg" src="https://pngimg.com/uploads/naruto/naruto_PNG3.png" alt="">
+
+<!-- Música -->
+<audio id="musicPlayer" loop>
+  <source src="Día Tras Día.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Control de música -->
+<div class="music-control" id="musicControl" onclick="toggleMusic()">
+    <svg id="playIcon" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg id="pauseIcon" style="display: none;" viewBox="0 0 24 24">
+        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+    </svg>
+</div>
+
+<!-- Botón descargar -->
+<button class="download-btn" onclick="descargarPagina()" title="Descargar como imagen">
+    <svg viewBox="0 0 24 24">
+        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+    </svg>
+</button>
+
+<!-- Modal para fotos y videos -->
+<div class="modal" id="modal" onclick="cerrarModal()">
+    <span class="modal-close">&times;</span>
+    <img id="modalImg" src="" alt="Foto expandida" style="display: none;">
+    <video id="modalVideo" controls style="display: none;"></video>
+</div>
+
+<div class="container" id="contenido">
+    <h1>💙 Para ti, Sara 💙</h1>
+    <p>Quería escribir esto para mostrarte cómo me enamoré de ti... 💫</p>
+    <button onclick="siguiente(1)"><span>Comenzar 💌</span></button>
+    <img class="stitch" src="https://pngimg.com/uploads/stitch/stitch_PNG71.png" alt="Stitch">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+    const paginas = [
+        {
+            titulo: "💫 Agradecimiento",
+            texto: "Gracias por llegar a mi vida, Sara. Por traer tranquilidad, ternura y alegría a mis días. Por hacer que lo simple se sienta mágico. Te agradezco por ser tú, por quedarte, y por quererme como lo haces.",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG60.png",
+            media: [
+                { type: 'video', src: "agradecimiento1.mp4" },
+                { type: 'video', src: "agradecimiento2.mp4" },
+            ]
+        },
+        {
+            titulo: "💙 La primera vez que te vi",
+            texto: "La primera vez que te vi, simplemente sabia que eras para mi, te manifeste y sirvio.",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG44.png",
+            media: [
+                { type: 'image', src: "gustar.jpg" },
+                { type: 'video', src: "gustar3.mp4" },
+                
+                
+            ]
+        },
+        {
+            titulo: "🌸 Cuando supe que me gustabas",
+            texto: "Supe que me gustabas cuando empecé a buscarte sin querer, cuando mi día no estaba completo sin hablar contigo. Cuando me descubrí sonriendo con tus mensajes y queriendo verte otra vez, solo para sentir esa paz que me das.",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG36.png",
+            media: [
+                { type: 'image', src: "primera.jpg" },
+                { type: 'video', src: "primera2.mp4" },
+                
+            ]
+        },
+        {
+            titulo: "🌺 Momentos",
+            texto: "Cada momento contigo se ha vuelto un recuerdo que guardo con mucho amor sarita. Las risas, las charlas, los silencios cómodos, todo eso me recuerda lo afortunado que soy de tenerte. Eres mi lugar seguro, mi felicidad en forma de persona.",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG43.png",
+            media: [
+                { type: 'image', src: "momentos1.jpg" },
+                { type: 'video', src: "momentos2.mp4" },
+                
+            ]
+        },
+        {
+            titulo: "💖 ¿Por qué tú?",
+            texto: "Porque eres tú, Sara. Porque nadie más me da la paz que tú me das. Porque tu forma de ser, tu fuerza me inspiran cada día. Te amo por cómo eres, por todo lo que haces, y por todo lo que sueñas.",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG46.png",
+            media: [
+                { type: 'image', src: "gustar2.jpg" },
+                { type: 'image', src: "porque.jpg" }
+            ]
+        },
+        {
+            titulo: "🐾 Y obviamente… fotos de Nala 🐶",
+            texto: "No podía faltar la más tierna de todas: Nala 💕. O conocida como salmonelita Laplace vargas cortez🐾💙",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG48.png",
+            media: [
+                { type: 'image', src: "nala1.jpg" },
+                { type: 'video', src: "nala2.mp4" },
+                { type: 'image', src: "nala3.jpg" },
+                { type: 'video', src: "nala4.mp4" }
+            ]
+        },
+        {
+            titulo: "💞 Fin",
+            texto: "Gracias por leer esto, mi amor. Todo lo que escribí viene del corazón. Eres mi persona favorita, mi sueño y mi realidad. 💙",
+            img: "https://pngimg.com/uploads/stitch/stitch_PNG49.png",
+            media: []
+        }
+    ];
+
+    let index = 0;
+    let musicPlaying = false;
+    const musicPlayer = document.getElementById('musicPlayer');
+
+    // Parallax effect
+    document.addEventListener('mousemove', (e) => {
+        const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+        const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+        document.body.style.setProperty('--mouse-x', `${moveX}px`);
+        document.body.style.setProperty('--mouse-y', `${moveY}px`);
+    });
+
+    function siguiente(i) {
+        if (i > paginas.length) return;
+        
+        const contenido = document.getElementById("contenido");
+        contenido.classList.add('fade-out');
+        
+        setTimeout(() => {
+            const data = paginas[index];
+            const progress = ((index + 1) / paginas.length) * 100;
+            
+            let mediaHTML = '';
+            if (data.media && data.media.length > 0) {
+                mediaHTML = '<div class="fotos">';
+                data.media.forEach(item => {
+                    if (item.type === 'video') {
+                        mediaHTML += `
+                            <div class="media-item video-indicator">
+                                <video src="${item.src}" onclick="expandirMedia('${item.src}', 'video')"></video>
+                            </div>
+                        `;
+                    } else {
+                        mediaHTML += `
+                            <div class="media-item">
+                                <img src="${item.src}" alt="foto" onclick="expandirMedia('${item.src}', 'image')">
+                            </div>
+                        `;
+                    }
+                });
+                mediaHTML += '</div>';
+            }
+            
+            contenido.innerHTML = `
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progress}%"></div>
+                </div>
+                <div class="progress-text">${index + 1} / ${paginas.length}</div>
+                <h2>${data.titulo}</h2>
+                ${mediaHTML}
+                <p>${data.texto}</p>
+                <div class="button-container">
+                    ${index > 0 ? `<button class="btn-secondary" onclick="anterior()"><span>⬅️ Anterior</span></button>` : ''}
+                    ${index < paginas.length - 1 
+                        ? `<button onclick="siguiente(${index + 2})"><span>Siguiente 💌</span></button>` 
+                        : `<button onclick="reiniciar()"><span>Volver al inicio 💙</span></button>`}
+                </div>
+                <img class="stitch" src="${data.img}" alt="Stitch">
+            `;
+            
+            contenido.classList.remove('fade-out');
+            contenido.classList.add('fade-in');
+            index++;
+        }, 500);
+    }
+
+    function anterior() {
+        if (index <= 1) return;
+        index -= 2;
+        siguiente(index + 1);
+    }
+
+    function reiniciar() {
+        index = 0;
+        const contenido = document.getElementById("contenido");
+        contenido.classList.add('fade-out');
+        
+        setTimeout(() => {
+            contenido.innerHTML = `
+                <h1>💙 Para ti, Sara 💙</h1>
+                <p>Quería escribir esto para mostrarte cómo me enamoré de ti... 💫</p>
+                <button onclick="siguiente(1)"><span>Comenzar 💌</span></button>
+                <img class="stitch" src="https://pngimg.com/uploads/stitch/stitch_PNG71.png" alt="Stitch">
+            `;
+            contenido.classList.remove('fade-out');
+            contenido.classList.add('fade-in');
+        }, 500);
+    }
+
+    // Control de música
+    function toggleMusic() {
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        
+        if (musicPlaying) {
+            musicPlayer.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        } else {
+            musicPlayer.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        }
+        musicPlaying = !musicPlaying;
+    }
+
+    // Expandir fotos y videos
+    function expandirMedia(src, type) {
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        const modalVideo = document.getElementById('modalVideo');
+        
+        modal.style.display = 'flex';
+        
+        if (type === 'video') {
+            modalImg.style.display = 'none';
+            modalVideo.style.display = 'block';
+            modalVideo.src = src;
+            modalVideo.play();
+        } else {
+            modalVideo.style.display = 'none';
+            modalImg.style.display = 'block';
+            modalImg.src = src;
+        }
+    }
+
+    function cerrarModal() {
+        const modal = document.getElementById('modal');
+        const modalVideo = document.getElementById('modalVideo');
+        modal.style.display = 'none';
+        modalVideo.pause();
+        modalVideo.src = '';
+    }
+
+    // Descargar página
+    async function descargarPagina() {
+        const contenido = document.getElementById('contenido');
+        const musicControl = document.getElementById('musicControl');
+        const downloadBtn = document.querySelector('.download-btn');
+        
+        // Ocultar controles temporalmente
+        musicControl.style.display = 'none';
+        downloadBtn.style.display = 'none';
+        
+        try {
+            const canvas = await html2canvas(contenido, {
+                backgroundColor: null,
+                scale: 2
+            });
+            
+            const link = document.createElement('a');
+            link.download = `para-sara-pagina-${index}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        } catch (error) {
+            alert('Hubo un error al descargar. Por favor intenta de nuevo.');
+        }
+        
+        // Mostrar controles de nuevo
+        musicControl.style.display = 'flex';
+        downloadBtn.style.display = 'flex';
+    }
+
+    // Crear partículas flotantes
+    function crearParticula(tipo) {
+        const particula = document.createElement("div");
+        particula.className = tipo;
+        
+        const emojis = {
+            heart: ['💖', '💕', '💗', '💓', '💝'],
+            star: ['✨', '⭐', '🌟'],
+            bubble: ['○', '◦', '●']
+        };
+        
+        particula.innerText = emojis[tipo][Math.floor(Math.random() * emojis[tipo].length)];
+        particula.style.left = Math.random() * 100 + "vw";
+        particula.style.fontSize = (Math.random() * 15 + 10) + "px";
+        particula.style.animationDuration = (Math.random() * 4 + 4) + "s";
+        document.body.appendChild(particula);
+        
+        setTimeout(() => particula.remove(), 8000);
+    }
+
+    // Generar partículas
+    setInterval(() => crearParticula('heart'), 600);
+    setInterval(() => crearParticula('star'), 1200);
+    setInterval(() => crearParticula('bubble'), 800);
+</script>
+
+</body>
+</html>
